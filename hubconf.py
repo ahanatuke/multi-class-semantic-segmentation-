@@ -19,3 +19,7 @@ def unet_carvana(pretrained=False, scale=0.5):
 
     return net
 
+
+def custom(path='path/to/model.pt', autoshape=True, _verbose=True, device=None):
+    # YOLOv5 custom or local model
+    return _create(path, autoshape=autoshape, verbose=_verbose, device=device)
