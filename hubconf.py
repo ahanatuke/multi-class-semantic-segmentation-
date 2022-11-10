@@ -22,4 +22,9 @@ def unet_carvana(pretrained=False, scale=0.5):
 
 def custom(path='path/to/model.pt', autoshape=True, _verbose=True, device=None):
     # YOLOv5 custom or local model
-    return _create(path, autoshape=autoshape, verbose=_verbose, device=device)
+    net = _UNet(n_channels=3, n_classes=11, bilinear=False)
+    
+    checkpoint = 'https://github.com/ahanatuke/multi-class-semantic-segmentation-/blob/master/new_3E_1S.pth'
+    net.load_state_dict(torch.hub.load_state_dict_from_url(checkpoint, progress=True))
+
+    return net
